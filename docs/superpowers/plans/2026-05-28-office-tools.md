@@ -1,5 +1,7 @@
 # Office 工具集 Implementation Plan
 
+> **状态：✅ 已完成** | 完成日期：2026-05-28
+>
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 实现 project_tools 的 Office 文档处理模块，包含 PDF 转 Word、PDF 合并/拆分、PDF 转图片、Word 转 PDF、Markdown 转换 6 个工具。
@@ -20,7 +22,7 @@
 - Create: `backend/app/core/router.py`
 - Create: `backend/app/core/file_utils.py`
 
-- [ ] **Step 1: 创建 requirements.txt**
+- [x] **Step 1: 创建 requirements.txt**
 
 ```txt
 fastapi==0.115.6
@@ -34,9 +36,9 @@ markdown==3.7
 weasyprint==63.1
 ```
 
-- [ ] **Step 2: 创建 backend/app/__init__.py**（空文件）
+- [x] **Step 2: 创建 backend/app/__init__.py**（空文件）
 
-- [ ] **Step 3: 创建 backend/app/main.py**
+- [x] **Step 3: 创建 backend/app/main.py**
 
 ```python
 from contextlib import asynccontextmanager
@@ -67,9 +69,9 @@ app.add_middleware(
 register_routers(app)
 ```
 
-- [ ] **Step 4: 创建 backend/app/core/__init__.py**（空文件）
+- [x] **Step 4: 创建 backend/app/core/__init__.py**（空文件）
 
-- [ ] **Step 5: 创建 backend/app/core/file_utils.py**
+- [x] **Step 5: 创建 backend/app/core/file_utils.py**
 
 ```python
 import shutil
@@ -110,7 +112,7 @@ def stop_cleanup_scheduler():
     pass
 ```
 
-- [ ] **Step 6: 创建 backend/app/core/router.py**
+- [x] **Step 6: 创建 backend/app/core/router.py**
 
 ```python
 import importlib
@@ -139,9 +141,9 @@ def register_routers(app: FastAPI):
 - Create: `backend/app/modules/office/services/__init__.py`（空文件）
 - Create: `backend/app/modules/office/services/pdf.py`
 
-- [ ] **Step 1: 创建所有目录和空 __init__.py 文件**
+- [x] **Step 1: 创建所有目录和空 __init__.py 文件**
 
-- [ ] **Step 2: 创建 PDF 服务**
+- [x] **Step 2: 创建 PDF 服务**
 
 ```python
 import io
@@ -241,7 +243,7 @@ def pdf_to_image(file_path: Path, fmt: str = "png") -> Path:
 **Files:**
 - Create: `backend/app/modules/office/services/convert.py`
 
-- [ ] **Step 1: 创建转换服务**
+- [x] **Step 1: 创建转换服务**
 
 ```python
 from pathlib import Path
@@ -287,7 +289,7 @@ def markdown_convert(text: str, output_format: str) -> Path:
 **Files:**
 - Create: `backend/app/modules/office/router.py`
 
-- [ ] **Step 1: 创建 Office 路由**
+- [x] **Step 1: 创建 Office 路由**
 
 ```python
 import shutil
@@ -380,7 +382,7 @@ async def markdown_convert_api(
 - Create: `frontend/src/App.vue`
 - Create: `frontend/src/styles/global.css`
 
-- [ ] **Step 1: 创建 package.json**
+- [x] **Step 1: 创建 package.json**
 
 ```json
 {
@@ -407,7 +409,7 @@ async def markdown_convert_api(
 }
 ```
 
-- [ ] **Step 2: 创建 index.html**
+- [x] **Step 2: 创建 index.html**
 
 ```html
 <!DOCTYPE html>
@@ -424,7 +426,7 @@ async def markdown_convert_api(
 </html>
 ```
 
-- [ ] **Step 3: 创建 vite.config.ts**
+- [x] **Step 3: 创建 vite.config.ts**
 
 ```typescript
 import { defineConfig } from 'vite'
@@ -447,7 +449,7 @@ export default defineConfig({
 })
 ```
 
-- [ ] **Step 4: 创建 tsconfig.json**
+- [x] **Step 4: 创建 tsconfig.json**
 
 ```json
 {
@@ -469,7 +471,7 @@ export default defineConfig({
 }
 ```
 
-- [ ] **Step 5: 创建 src/main.ts**
+- [x] **Step 5: 创建 src/main.ts**
 
 ```typescript
 import { createApp } from 'vue'
@@ -485,7 +487,7 @@ app.use(router)
 app.mount('#app')
 ```
 
-- [ ] **Step 6: 创建 src/App.vue**
+- [x] **Step 6: 创建 src/App.vue**
 
 ```vue
 <template>
@@ -493,7 +495,7 @@ app.mount('#app')
 </template>
 ```
 
-- [ ] **Step 7: 创建 src/styles/global.css**
+- [x] **Step 7: 创建 src/styles/global.css**
 
 ```css
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -508,7 +510,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 - Create: `frontend/src/router/index.ts`
 - Create: `frontend/src/views/Home.vue`
 
-- [ ] **Step 1: 创建路由**
+- [x] **Step 1: 创建路由**
 
 ```typescript
 import { createRouter, createWebHistory } from 'vue-router'
@@ -556,7 +558,7 @@ const router = createRouter({
 export default router
 ```
 
-- [ ] **Step 2: 创建首页 Home.vue**
+- [x] **Step 2: 创建首页 Home.vue**
 
 ```vue
 <template>
@@ -616,7 +618,7 @@ const tools = [
 - Create: `frontend/src/components/common/FileUploader.vue`
 - Create: `frontend/src/components/common/ResultPanel.vue`
 
-- [ ] **Step 1: 创建 AppLayout.vue**
+- [x] **Step 1: 创建 AppLayout.vue**
 
 ```vue
 <template>
@@ -657,7 +659,7 @@ const currentTool = computed(() => toolMap[route.name as string]?.tool ?? '')
 </script>
 ```
 
-- [ ] **Step 2: 创建 FileUploader.vue**
+- [x] **Step 2: 创建 FileUploader.vue**
 
 ```vue
 <template>
@@ -718,7 +720,7 @@ const handleRemove = (_file: UploadFile, list: UploadUserFile[]) => {
 </script>
 ```
 
-- [ ] **Step 3: 创建 ResultPanel.vue**
+- [x] **Step 3: 创建 ResultPanel.vue**
 
 ```vue
 <template>
@@ -765,7 +767,7 @@ defineEmits<{
 **Files:**
 - Create: `frontend/src/api/office.ts`
 
-- [ ] **Step 1: 创建 API 封装**
+- [x] **Step 1: 创建 API 封装**
 
 ```typescript
 import axios from 'axios'
@@ -830,7 +832,7 @@ export async function markdownConvert(text: string, outputFormat: string, file?:
 **Files:**
 - Create: `frontend/src/views/office/PdfToWord.vue`
 
-- [ ] **Step 1: 创建 PdfToWord.vue**
+- [x] **Step 1: 创建 PdfToWord.vue**
 
 ```vue
 <template>
@@ -893,7 +895,7 @@ async function handleSubmit(files: any[]) {
 **Files:**
 - Create: `frontend/src/views/office/PdfMerge.vue`
 
-- [ ] **Step 1: 创建 PdfMerge.vue**
+- [x] **Step 1: 创建 PdfMerge.vue**
 
 ```vue
 <template>
@@ -957,7 +959,7 @@ async function handleSubmit(files: any[]) {
 **Files:**
 - Create: `frontend/src/views/office/PdfSplit.vue`
 
-- [ ] **Step 1: 创建 PdfSplit.vue**
+- [x] **Step 1: 创建 PdfSplit.vue**
 
 ```vue
 <template>
@@ -1034,7 +1036,7 @@ async function handleSubmit(files: any[]) {
 **Files:**
 - Create: `frontend/src/views/office/PdfToImage.vue`
 
-- [ ] **Step 1: 创建 PdfToImage.vue**
+- [x] **Step 1: 创建 PdfToImage.vue**
 
 ```vue
 <template>
@@ -1106,7 +1108,7 @@ async function handleSubmit(files: any[]) {
 **Files:**
 - Create: `frontend/src/views/office/WordToPdf.vue`
 
-- [ ] **Step 1: 创建 WordToPdf.vue**
+- [x] **Step 1: 创建 WordToPdf.vue**
 
 ```vue
 <template>
@@ -1169,7 +1171,7 @@ async function handleSubmit(files: any[]) {
 **Files:**
 - Create: `frontend/src/views/office/MarkdownConvert.vue`
 
-- [ ] **Step 1: 创建 MarkdownConvert.vue**
+- [x] **Step 1: 创建 MarkdownConvert.vue**
 
 ```vue
 <template>
@@ -1275,13 +1277,13 @@ function triggerDownload(blob: Blob, filename: string) {
 
 ### Task 15: 安装依赖并验证启动
 
-- [ ] **Step 1: 安装 Python 依赖**
+- [x] **Step 1: 安装 Python 依赖**
 
 ```bash
 cd backend && pip install -r requirements.txt
 ```
 
-- [ ] **Step 2: 启动后端验证**
+- [x] **Step 2: 启动后端验证**
 
 ```bash
 cd backend && python -m uvicorn app.main:app --reload --port 8000
@@ -1289,13 +1291,13 @@ cd backend && python -m uvicorn app.main:app --reload --port 8000
 
 Expected: 访问 http://localhost:8000/docs 可见 Swagger 文档，列出所有 API。
 
-- [ ] **Step 3: 安装前端依赖**
+- [x] **Step 3: 安装前端依赖**
 
 ```bash
 cd frontend && npm install
 ```
 
-- [ ] **Step 4: 启动前端验证**
+- [x] **Step 4: 启动前端验证**
 
 ```bash
 cd frontend && npm run dev
@@ -1307,9 +1309,9 @@ Expected: Vite 启动成功，访问 http://localhost:3000 可见首页工具卡
 
 ### Task 16: 功能联调验证
 
-- [ ] **Step 1: 测试 PDF 转 Word** — 准备一个 .pdf，上传转换，验证下载的 .docx 可正常打开
-- [ ] **Step 2: 测试 PDF 合并** — 选择 2-3 个 PDF，合并后验证页数正确
-- [ ] **Step 3: 测试 PDF 拆分** — 分别用三种拆分方式测试，验证结果
-- [ ] **Step 4: 测试 PDF 转图片** — 分别选 PNG/JPG 格式，解压验证图片
-- [ ] **Step 5: 测试 Word 转 PDF** — 上传 .docx，验证 PDF 内容正确
-- [ ] **Step 6: 测试 Markdown 转换** — 粘贴文本和上传文件两种方式，分别转 PDF/Word
+- [x] **Step 1: 测试 PDF 转 Word** — 准备一个 .pdf，上传转换，验证下载的 .docx 可正常打开
+- [x] **Step 2: 测试 PDF 合并** — 选择 2-3 个 PDF，合并后验证页数正确
+- [x] **Step 3: 测试 PDF 拆分** — 分别用三种拆分方式测试，验证结果
+- [x] **Step 4: 测试 PDF 转图片** — 分别选 PNG/JPG 格式，解压验证图片
+- [x] **Step 5: 测试 Word 转 PDF** — 上传 .docx，验证 PDF 内容正确
+- [x] **Step 6: 测试 Markdown 转换** — 粘贴文本和上传文件两种方式，分别转 PDF/Word
