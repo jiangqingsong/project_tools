@@ -1,0 +1,8 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.idea/
+temp/
+.env
+*.egg-info/
