@@ -1,0 +1,1 @@
+- [Git 操作只在明确指令下执行](memory/feedback_git-only-on-explicit-command.md) — 用户只在说"提交""commit""推送""你懂的"时才操作 git
