@@ -2,12 +2,20 @@
   <AppLayout>
     <h2 style="margin-bottom: 20px;">Word 转 PDF</h2>
     <FileUploader
+      ref="fileUploaderRef"
       accept=".docx"
       tip="仅支持 .docx 文件"
       submit-text="开始转换"
       :loading="loading"
       @submit="handleSubmit"
     />
+    <el-form label-width="80px" style="margin: 16px 0;">
+      <el-form-item label="导出文件名">
+        <el-input v-model="filename" placeholder="留空则使用原文件名" style="width: 300px;">
+          <template #suffix>.pdf</template>
+        </el-input>
+      </el-form-item>
+    </el-form>
     <ResultPanel
       :visible="result.status !== ''"
       :status="result.status"
@@ -25,7 +33,9 @@ import FileUploader from '@/components/common/FileUploader.vue'
 import ResultPanel from '@/components/common/ResultPanel.vue'
 import { wordToPdf } from '@/api/office'
 
+const fileUploaderRef = ref<InstanceType<typeof FileUploader>>()
 const loading = ref(false)
+const filename = ref('')
 const result = reactive<{ status: '' | 'success' | 'error'; fileName?: string; errorMessage?: string }>({ status: '' })
 
 async function handleSubmit(files: any[]) {
@@ -36,11 +46,13 @@ async function handleSubmit(files: any[]) {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = files[0].name.replace(/\.docx$/i, '') + '.pdf'
+    const downloadName = (filename.value.trim() || files[0].name.replace(/\.docx$/i, '')) + '.pdf'
+    a.download = downloadName
     a.click()
     URL.revokeObjectURL(url)
     result.status = 'success'
-    result.fileName = files[0].name.replace(/\.docx$/i, '') + '.pdf'
+    result.fileName = downloadName
+    fileUploaderRef.value?.clearFiles()
   } catch (e: any) {
     result.status = 'error'
     result.errorMessage = e.message || '转换失败'

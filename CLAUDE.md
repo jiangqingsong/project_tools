@@ -1,5 +1,3 @@
-每次对话结束，显性告诉用户：”搞定了，还有事没？”
-
 ---
 
 ## 安全规则
@@ -11,6 +9,13 @@
 - 提交代码前确认暂存区不包含敏感文件
 
 ---
+
+## 项目信息
+
+- 后端日志路径：`backend/logs/app.log`（RotatingFileHandler，10MB×5个文件）
+- 后端技术栈：Python FastAPI + uvicorn，端口 8000
+- 前端技术栈：Vue 3 + TypeScript + Element Plus + Vite，端口 3000
+- Word 转 PDF 使用 LibreOffice headless 模式（排版保真度高）
 
 ## 沟通
 

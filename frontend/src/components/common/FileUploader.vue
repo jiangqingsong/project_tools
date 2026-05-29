@@ -53,4 +53,10 @@ const handleChange = (_file: UploadFile, list: UploadUserFile[]) => {
 const handleRemove = (_file: UploadFile, list: UploadUserFile[]) => {
   fileList.value = list
 }
+
+function clearFiles() {
+  fileList.value = []
+}
+
+defineExpose({ clearFiles })
 </script>
